@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <title>English Proficiency Project</title>
+    <meta charset="utf-8">
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+
+</script>
+<body >
+  <!-- <div style='width: 300px; margin: auto; text-align: center;'> -->
+
+  <form action = "/wordcloud" method = "POST"
+   enctype = "multipart/form-data">
+   <input type = "file" name = "file" />
+   <input type = "submit"/></form>
+
+{%if True%}
+<img style="width:50% layout:center"src="{{url_for('static',filename=wordcloud)}}"/>
+{% endif%}
+
+
+<table>
+  <tr>
+    <td> Most common words top 200</td>
+  </tr>
+   {% for words in data%}
+
+  <tr>
+    <td>{{words[1]}}</td>
+    <td><a href="https://www.oxfordlearnersdictionaries.com/definition/english/{{words[0]}}_1?q={{words[0]}}">
+      {{words[0]}}</a></td>
+  </tr>
+     {%endfor%}
+</table>
+  </div>
+</body>
+
+</html>
